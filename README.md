@@ -67,7 +67,7 @@ copy .env.example .env
 ```
 Open `.env` and replace `your_api_key_here` with your actual Gemini API key:
 ```
-GEMINI_API_KEY=AIza...
+GEMINI_API_KEY=...
 ```
 
 ### 3. Run the server
