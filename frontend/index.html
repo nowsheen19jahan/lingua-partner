@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lingua Partner</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/static/css/style.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>" />
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ── Sidebar ─────────────────────────────────────────── -->
+  <aside class="sidebar">
+
+    <div class="sidebar-logo">
+      <span class="logo-icon">🌍</span>
+      <div>
+        <h1>Lingua Partner</h1>
+        <p>AI Language Tutor</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Language settings -->
+    <div>
+      <p class="section-label" style="margin-bottom:10px">Languages</p>
+      <div class="settings-form">
+
+        <div class="form-group">
+          <label for="targetLang">Practising</label>
+          <select id="targetLang">
+            <option value="Spanish"    selected>🇪🇸 Spanish</option>
+            <option value="French"            >🇫🇷 French</option>
+            <option value="German"            >🇩🇪 German</option>
+            <option value="Italian"           >🇮🇹 Italian</option>
+            <option value="Portuguese"        >🇧🇷 Portuguese</option>
+            <option value="Japanese"          >🇯🇵 Japanese</option>
+            <option value="Mandarin Chinese"  >🇨🇳 Mandarin</option>
+            <option value="Korean"            >🇰🇷 Korean</option>
+            <option value="Arabic"            >🇸🇦 Arabic</option>
+            <option value="Russian"           >🇷🇺 Russian</option>
+            <option value="Hindi"             >🇮🇳 Hindi</option>
+            <option value="Dutch"             >🇳🇱 Dutch</option>
+            <option value="Polish"            >🇵🇱 Polish</option>
+            <option value="Turkish"           >🇹🇷 Turkish</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="nativeLang">My language</label>
+          <select id="nativeLang">
+            <option value="English"   selected>English</option>
+            <option value="Spanish"           >Spanish</option>
+            <option value="French"            >French</option>
+            <option value="German"            >German</option>
+            <option value="Portuguese"        >Portuguese</option>
+            <option value="Chinese"           >Chinese</option>
+            <option value="Japanese"          >Japanese</option>
+            <option value="Korean"            >Korean</option>
+            <option value="Arabic"            >Arabic</option>
+            <option value="Hindi"             >Hindi</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Mode selector -->
+    <div>
+      <p class="section-label" style="margin-bottom:10px">Mode</p>
+      <div class="mode-toggle">
+        <button class="mode-btn active" data-mode="conversation" title="Immersive conversation practice">
+          💬 Conversation
+        </button>
+        <button class="mode-btn" data-mode="correction" title="Grammar and spelling correction">
+          ✏️ Correction
+        </button>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- New chat -->
+    <button class="btn-new-chat" id="newChatBtn">
+      <span>＋</span> New Chat
+    </button>
+
+    <!-- Model status -->
+    <div class="status-bar">
+      <span class="status-dot loading" id="statusDot"></span>
+      <span id="statusText">Connecting…</span>
+    </div>
+
+  </aside>
+
+  <!-- ── Main ───────────────────────────────────────────── -->
+  <div class="main">
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <div>
+        <div class="topbar-title" id="topbarTitle">Spanish — Conversation Practice</div>
+        <div class="topbar-subtitle" id="topbarSub">Session · —</div>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn-icon" id="clearBtn" title="Clear chat" onclick="document.getElementById('newChatBtn').click()">🗑</button>
+      </div>
+    </header>
+
+    <!-- Chat messages -->
+    <div class="chat-container" id="chatContainer">
+      <!-- welcome screen rendered by JS -->
+    </div>
+
+    <!-- Grammar result panel -->
+    <div class="grammar-panel" id="grammarPanel">
+      <h3>Grammar Check</h3>
+      <div class="grammar-result" id="grammarResult"></div>
+    </div>
+
+    <!-- Input bar -->
+    <div class="input-bar">
+      <div class="input-row">
+        <textarea
+          id="messageInput"
+          rows="1"
+          placeholder="Type your message… (Shift+Enter for new line)"
+          aria-label="Message input"
+          autocomplete="off"
+          spellcheck="true"
+        ></textarea>
+
+        <button class="btn-grammar" id="grammarBtn" title="Check grammar of your input">
+          <span>✏️</span> Check
+        </button>
+
+        <button class="btn-send" id="sendBtn" title="Send message (Enter)">
+          ➤
+        </button>
+      </div>
+      <p class="input-hint">Enter to send · Shift+Enter for new line · ✏️ Check to analyse grammar</p>
+    </div>
+
+  </div><!-- /.main -->
+
+</div><!-- /.app -->
+
+<!-- Toast container -->
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+## Render deployment configuration
+## Docs: https://render.com/docs/render-yaml-spec
+##
+## Single web service — FastAPI serves both the API and the static frontend.
+## The Gemini API is called remotely, so no sidecar or GPU instance needed.
+
+services:
+  - type: web
+    name: lingua-partner
+    runtime: python
+    region: oregon
+    plan: free               # free tier is sufficient — no local model to run
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false          # set this manually in the Render dashboard (never commit the key)
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: PYTHON_VERSION
+        value: "3.12"
+    healthCheckPath: /api/health
+    autoDeploy: true
